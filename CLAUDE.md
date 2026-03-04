@@ -9,6 +9,7 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 - TypeScript, VSCode Extension API
 - Build: `npm run compile` (runs `tsc`)
 - Lint: `npm run lint` (runs `eslint src`)
+- Format: `npx prettier --write "src/**/*.ts"` (runs prettier)
 - Test: `npm run test` (runs `vscode-test`)
 
 ## Project Structure
@@ -16,6 +17,7 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 - `src/extension.ts` — Extension entry point. Registers the `lineref.copyLineRef` command.
 - `package.json` — Extension manifest: commands, keybindings, menus.
 - `src/test/` — Test files.
+- `.prettierrc.json` — Prettier config (double quotes, semicolons, trailing commas, 80-char print width, LF line endings).
 
 ## Versioning
 
