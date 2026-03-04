@@ -14,10 +14,26 @@
   "contributes": {
     "commands": [
       {
-        "command": "lineref.helloWorld",
-        "title": "Hello World"
+        "command": "lineref.copyLineRef",
+        "title": "LineRef: Copy Line Reference"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "lineref.copyLineRef",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "lineref.copyLineRef",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
