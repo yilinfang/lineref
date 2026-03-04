@@ -2,6 +2,8 @@
   "name": "lineref",
   "displayName": "LineRef",
   "description": "Quickly copy file path and line range references from the current selection.",
+  "publisher": "yilinfang",
+  "repository": "https://github.com/yilinfang/lineref",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.109.0"
