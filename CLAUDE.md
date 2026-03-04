@@ -17,6 +17,10 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 - `package.json` — Extension manifest: commands, keybindings, menus.
 - `src/test/` — Test files.
 
+## Versioning
+
+- Always use `npm version <options>` (e.g. `npm version 0.0.3` or `npm version major`) to bump the version.
+
 ## Release
 
 - Not published to the VSCode Marketplace.

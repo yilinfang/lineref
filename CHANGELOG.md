@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.0.2] - 2026-03-04
+
+### Changed
+
+- Updated `publisher` and `repository` fields in `package.json`
+
 ## [0.0.1] - 2026-03-04
 
 ### Added

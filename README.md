@@ -35,9 +35,3 @@ This extension has no configurable settings.
 | Command             | Windows / Linux | Mac           |
 | ------------------- | --------------- | ------------- |
 | Copy Line Reference | `Ctrl+Shift+L`  | `Cmd+Shift+L` |
-
-## Release Notes
-
-### 0.0.1
-
-Initial release — copy line references from the editor.
