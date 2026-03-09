@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-A VSCode extension that copies file path + line range references (e.g. `src/foo.ts:10-20`) to the clipboard from the current editor selection.
+A VSCode extension that copies file path + line range references (e.g. `src/foo.ts:10-20` or `/abs/path/src/foo.ts:10-20`) to the clipboard from the current editor selection.
 
 ## Tech Stack
 
@@ -14,8 +14,8 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 
 ## Project Structure
 
-- `src/extension.ts` — Extension entry point. Registers the `lineref.copyLineRef` command.
-- `package.json` — Extension manifest: commands, keybindings, menus.
+- `src/extension.ts` — Extension entry point. Registers `lineref.copyLineRef` and `lineref.copyGlobalLineRef`.
+- `package.json` — Extension manifest: commands and menus (no default keybindings).
 - `src/test/` — Test files.
 - `.prettierrc.json` — Prettier config (double quotes, semicolons, trailing commas, 80-char print width, LF line endings).
 
@@ -34,7 +34,9 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 
 ## Key Details
 
-- Command ID: `lineref.copyLineRef`
-- Keybinding: `Ctrl+Shift+L` / `Cmd+Shift+L`
-- Output format: `relativePath:startLine` (single line) or `relativePath:startLine-endLine` (range)
+- Command IDs: `lineref.copyLineRef`, `lineref.copyGlobalLineRef`
+- Keybinding: no default keybindings (users can assign their own in `keybindings.json`)
+- Output format:
+  - `lineref.copyLineRef`: `relativePath:startLine` (single line) or `relativePath:startLine-endLine` (range)
+  - `lineref.copyGlobalLineRef`: `absolutePath:startLine` (single line) or `absolutePath:startLine-endLine` (range)
 - Line numbers are 1-based.

@@ -4,6 +4,16 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.0] - 2026-03-09
+
+### Added
+
+- `LineRef: Copy Global Line Reference` command to copy `absolutePath:line` or `absolutePath:startLine-endLine` to clipboard
+
+### Removed
+
+- Remove default keybindings to avoid conflicts with existing shortcuts
+
 ## [0.0.5] - 2026-03-08
 
 ### Changed

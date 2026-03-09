@@ -30,7 +30,30 @@ export function activate(context: vscode.ExtensionContext) {
     },
   );
 
-  context.subscriptions.push(disposable);
+  const disposableGlobal = vscode.commands.registerCommand(
+    "lineref.copyGlobalLineRef",
+    async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        vscode.window.showWarningMessage("No active editor");
+        return;
+      }
+
+      const filePath = editor.document.uri.fsPath;
+      const startLine = editor.selection.start.line + 1;
+      const endLine = editor.selection.end.line + 1;
+
+      const lineRef =
+        startLine === endLine
+          ? `${filePath}:${startLine}`
+          : `${filePath}:${startLine}-${endLine}`;
+
+      await vscode.env.clipboard.writeText(lineRef);
+      vscode.window.showInformationMessage(`Copied: ${lineRef}`);
+    },
+  );
+
+  context.subscriptions.push(disposable, disposableGlobal);
 }
 
 export function deactivate() {}
