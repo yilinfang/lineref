@@ -29,10 +29,7 @@ suite("Extension Test Suite", () => {
     await vscode.commands.executeCommand("lineref.copyLineRef");
 
     const clipboard = await vscode.env.clipboard.readText();
-    const relativePath = vscode.workspace.asRelativePath(
-      document.uri,
-      false,
-    );
+    const relativePath = vscode.workspace.asRelativePath(document.uri, false);
     assert.strictEqual(clipboard, `${relativePath}:5`);
   });
 
@@ -42,10 +39,7 @@ suite("Extension Test Suite", () => {
     await vscode.commands.executeCommand("lineref.copyLineRef");
 
     const clipboard = await vscode.env.clipboard.readText();
-    const relativePath = vscode.workspace.asRelativePath(
-      document.uri,
-      false,
-    );
+    const relativePath = vscode.workspace.asRelativePath(document.uri, false);
     assert.strictEqual(clipboard, `${relativePath}:5-10`);
   });
 
