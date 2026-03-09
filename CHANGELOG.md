@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.1] - 2026-03-09
+
+### Added
+
+- Add real tests for `copyLineRef` and `copyGlobalLineRef` commands (single line and multi-line selections)
+
 ## [0.1.0] - 2026-03-09
 
 ### Added

@@ -1,15 +1,69 @@
 import * as assert from "assert";
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
+import * as path from "path";
 import * as vscode from "vscode";
-// import * as myExtension from '../../extension';
 
 suite("Extension Test Suite", () => {
-  vscode.window.showInformationMessage("Start all tests.");
+  let document: vscode.TextDocument;
+  let editor: vscode.TextEditor;
 
-  test("Sample test", () => {
-    assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-    assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+  const sampleContent = Array.from(
+    { length: 20 },
+    (_, i) => `line ${i + 1}`,
+  ).join("\n");
+
+  setup(async () => {
+    document = await vscode.workspace.openTextDocument({
+      content: sampleContent,
+      language: "plaintext",
+    });
+    editor = await vscode.window.showTextDocument(document);
+  });
+
+  teardown(async () => {
+    await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
+  });
+
+  test("copyLineRef: single line selection", async () => {
+    editor.selection = new vscode.Selection(4, 0, 4, 0);
+
+    await vscode.commands.executeCommand("lineref.copyLineRef");
+
+    const clipboard = await vscode.env.clipboard.readText();
+    const relativePath = vscode.workspace.asRelativePath(
+      document.uri,
+      false,
+    );
+    assert.strictEqual(clipboard, `${relativePath}:5`);
+  });
+
+  test("copyLineRef: multi-line selection", async () => {
+    editor.selection = new vscode.Selection(4, 0, 9, 0);
+
+    await vscode.commands.executeCommand("lineref.copyLineRef");
+
+    const clipboard = await vscode.env.clipboard.readText();
+    const relativePath = vscode.workspace.asRelativePath(
+      document.uri,
+      false,
+    );
+    assert.strictEqual(clipboard, `${relativePath}:5-10`);
+  });
+
+  test("copyGlobalLineRef: single line selection", async () => {
+    editor.selection = new vscode.Selection(0, 0, 0, 0);
+
+    await vscode.commands.executeCommand("lineref.copyGlobalLineRef");
+
+    const clipboard = await vscode.env.clipboard.readText();
+    assert.strictEqual(clipboard, `${document.uri.fsPath}:1`);
+  });
+
+  test("copyGlobalLineRef: multi-line selection", async () => {
+    editor.selection = new vscode.Selection(2, 0, 7, 0);
+
+    await vscode.commands.executeCommand("lineref.copyGlobalLineRef");
+
+    const clipboard = await vscode.env.clipboard.readText();
+    assert.strictEqual(clipboard, `${document.uri.fsPath}:3-8`);
   });
 });

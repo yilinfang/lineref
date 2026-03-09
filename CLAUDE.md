@@ -16,7 +16,7 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 
 - `src/extension.ts` — Extension entry point. Registers `lineref.copyLineRef` and `lineref.copyGlobalLineRef`.
 - `package.json` — Extension manifest: commands and menus (no default keybindings).
-- `src/test/` — Test files.
+- `src/test/extension.test.ts` — Tests for `copyLineRef` and `copyGlobalLineRef` (single line and multi-line selections).
 - `.prettierrc.json` — Prettier config (double quotes, semicolons, trailing commas, 80-char print width, LF line endings).
 
 ## Versioning
