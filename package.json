@@ -4,7 +4,7 @@
   "description": "Quickly copy file path and line range references from the current selection.",
   "publisher": "yilinfang",
   "repository": "https://github.com/yilinfang/lineref",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.70.0"
   },
