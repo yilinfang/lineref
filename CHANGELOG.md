@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.0.4] - 2026-03-08
+
+### Changed
+
+- CI: auto-publish to Open VSX Registry on release
+
 ## [0.0.3] - 2026-03-04
 
 - Format with prettier
