@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.0.5] - 2026-03-08
+
+### Changed
+
+- Lower minimum VS Code version requirement from 1.109 to 1.70 for broader compatibility (Cursor, Windsurf, etc.)
+
 ## [0.0.4] - 2026-03-08
 
 ### Changed
