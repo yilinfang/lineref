@@ -21,7 +21,8 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 
 ## Versioning
 
-- Always use `npm version <options>` (e.g. `npm version 0.0.3` or `npm version major`) to bump the version.
+- Before bumping: update CHANGELOG.md and any relevant docs, then commit those changes first.
+- Then use `npm version <version>` (e.g. `npm version 0.0.4` or `npm version patch`) to bump — this creates a version commit and git tag automatically.
 
 ## Release
 
