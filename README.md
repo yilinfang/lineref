@@ -21,7 +21,7 @@ Quickly copy file path and line range references from the current selection. Per
 
 ### Option 1: Open VSX Registry (Recommended for Antigravity, Windsurf, etc.)
 
-Search for "LineRef" in your editor's extensions marketplace, or visit: https://open-vsx.org/extension/yilinfang/lineref
+Search for "LineRef" in your editor's extensions marketplace, or visit the [Open VSX Registry](https://open-vsx.org/extension/yilinfang/lineref)
 
 ### Option 2: Manual Installation (VSCode and Others)
 
