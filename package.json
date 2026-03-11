@@ -28,11 +28,11 @@
       "editor/context": [
         {
           "command": "lineref.copyLineRef",
-          "group": "navigation"
+          "group": "8_lineref"
         },
         {
           "command": "lineref.copyGlobalLineRef",
-          "group": "navigation"
+          "group": "8_lineref"
         }
       ]
     }
