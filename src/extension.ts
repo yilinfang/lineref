@@ -1,5 +1,37 @@
 import * as vscode from "vscode";
 
+async function copyLineRefInternal(
+  editor: vscode.TextEditor,
+  useAbsolutePath: boolean,
+): Promise<void> {
+  let filePath: string;
+  if (useAbsolutePath) {
+    filePath = editor.document.uri.fsPath;
+  } else {
+    const workspaceFolder = vscode.workspace.getWorkspaceFolder(
+      editor.document.uri,
+    );
+    filePath = workspaceFolder
+      ? vscode.workspace.asRelativePath(editor.document.uri, false)
+      : editor.document.fileName;
+  }
+
+  const startLine = editor.selection.start.line + 1;
+  const endLine = editor.selection.end.line + 1;
+
+  const lineRef =
+    startLine === endLine
+      ? `${filePath}:${startLine}`
+      : `${filePath}:${startLine}-${endLine}`;
+
+  try {
+    await vscode.env.clipboard.writeText(lineRef);
+    vscode.window.showInformationMessage(`Copied: ${lineRef}`);
+  } catch (err) {
+    vscode.window.showErrorMessage(`Failed to copy: ${err}`);
+  }
+}
+
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     "lineref.copyLineRef",
@@ -10,23 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      const workspaceFolder = vscode.workspace.getWorkspaceFolder(
-        editor.document.uri,
-      );
-      const relativePath = workspaceFolder
-        ? vscode.workspace.asRelativePath(editor.document.uri, false)
-        : editor.document.fileName;
-
-      const startLine = editor.selection.start.line + 1;
-      const endLine = editor.selection.end.line + 1;
-
-      const lineRef =
-        startLine === endLine
-          ? `${relativePath}:${startLine}`
-          : `${relativePath}:${startLine}-${endLine}`;
-
-      await vscode.env.clipboard.writeText(lineRef);
-      vscode.window.showInformationMessage(`Copied: ${lineRef}`);
+      await copyLineRefInternal(editor, false);
     },
   );
 
@@ -39,17 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      const filePath = editor.document.uri.fsPath;
-      const startLine = editor.selection.start.line + 1;
-      const endLine = editor.selection.end.line + 1;
-
-      const lineRef =
-        startLine === endLine
-          ? `${filePath}:${startLine}`
-          : `${filePath}:${startLine}-${endLine}`;
-
-      await vscode.env.clipboard.writeText(lineRef);
-      vscode.window.showInformationMessage(`Copied: ${lineRef}`);
+      await copyLineRefInternal(editor, true);
     },
   );
 
