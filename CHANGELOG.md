@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.4] - 2026-03-15
+
+### Changed
+
+- Refactor: extract `copyLineRefInternal` function to reduce code duplication
+
 ## [0.1.3] - 2026-03-11
 
 ### Fixed
