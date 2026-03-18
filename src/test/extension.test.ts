@@ -1,5 +1,4 @@
 import * as assert from "assert";
-import * as path from "path";
 import * as vscode from "vscode";
 
 suite("Extension Test Suite", () => {
@@ -40,7 +39,7 @@ suite("Extension Test Suite", () => {
 
     const clipboard = await vscode.env.clipboard.readText();
     const relativePath = vscode.workspace.asRelativePath(document.uri, false);
-    assert.strictEqual(clipboard, `${relativePath}:5-10`);
+    assert.strictEqual(clipboard, `${relativePath}:5-9`);
   });
 
   test("copyGlobalLineRef: single line selection", async () => {
@@ -58,6 +57,16 @@ suite("Extension Test Suite", () => {
     await vscode.commands.executeCommand("lineref.copyGlobalLineRef");
 
     const clipboard = await vscode.env.clipboard.readText();
-    assert.strictEqual(clipboard, `${document.uri.fsPath}:3-8`);
+    assert.strictEqual(clipboard, `${document.uri.fsPath}:3-7`);
+  });
+
+  test("copyLineRef: includes end line when selection ends mid-line", async () => {
+    editor.selection = new vscode.Selection(4, 0, 9, 3);
+
+    await vscode.commands.executeCommand("lineref.copyLineRef");
+
+    const clipboard = await vscode.env.clipboard.readText();
+    const relativePath = vscode.workspace.asRelativePath(document.uri, false);
+    assert.strictEqual(clipboard, `${relativePath}:5-10`);
   });
 });

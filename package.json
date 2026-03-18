@@ -6,7 +6,7 @@
   "repository": "https://github.com/yilinfang/lineref",
   "version": "0.1.4",
   "engines": {
-    "vscode": "^1.70.0"
+    "vscode": "^1.105.0"
   },
   "categories": [
     "Other"

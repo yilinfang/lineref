@@ -17,7 +17,10 @@ async function copyLineRefInternal(
   }
 
   const startLine = editor.selection.start.line + 1;
-  const endLine = editor.selection.end.line + 1;
+  const endLine =
+    !editor.selection.isEmpty && editor.selection.end.character === 0
+      ? editor.selection.end.line
+      : editor.selection.end.line + 1;
 
   const lineRef =
     startLine === endLine
