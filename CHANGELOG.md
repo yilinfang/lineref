@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.0] - 2026-03-18
+
+### Fixed
+
+- Handle end-of-line-exclusive selections correctly
+
 ## [0.1.4] - 2026-03-15
 
 ### Changed
