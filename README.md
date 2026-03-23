@@ -19,21 +19,17 @@ Quickly copy file path and line range references from the current selection. Per
 
 ## Installation
 
-### Option 1: Open VSX Registry (Recommended for Antigravity, Windsurf, etc.)
+### Option 1: Open VSX Registry (Recommended for Cursor, Antigravity, Windsurf, etc.)
 
 Search for "LineRef" in your editor's extensions marketplace, or visit the [Open VSX Registry](https://open-vsx.org/extension/yilinfang/lineref)
 
-### Option 2: Manual Installation (VSCode and Others)
+### Option 2: Manual Installation (Recommended for VSCode)
 
 1. Go to the [Releases](https://github.com/yilinfang/lineref/releases) page or [Open VSX Registry](https://open-vsx.org/extension/yilinfang/lineref)
 2. Download the latest `.vsix` file
 3. Install:
    - **VSCode**: Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`), run **Extensions: Install from VSIX...**, and select the downloaded `.vsix` file
    - **Other editors**: Follow your editor's instructions for installing VSIX files
-
-## Extension Settings
-
-This extension has no configurable settings.
 
 ## Keybindings
 
