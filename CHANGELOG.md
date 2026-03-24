@@ -4,6 +4,18 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.3.1] - 2026-03-24
+
+### Changed
+
+- Update clipboard notification to use status bar message
+
+## [0.3.0] - 2026-03-23
+
+### Added
+
+- Make LineRef a UI plugin
+
 ## [0.2.2] - 2026-03-23
 
 ### Changed
