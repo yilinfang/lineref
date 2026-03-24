@@ -29,7 +29,7 @@ async function copyLineRefInternal(
 
   try {
     await vscode.env.clipboard.writeText(lineRef);
-    vscode.window.showInformationMessage(`Copied: ${lineRef}`);
+    vscode.window.setStatusBarMessage(`Copied: ${lineRef}`, 3000);
   } catch (err) {
     vscode.window.showErrorMessage(`Failed to copy: ${err}`);
   }
