@@ -25,6 +25,14 @@
       {
         "command": "lineref.copyGlobalLineRef",
         "title": "LineRef: Copy Global Line Reference"
+      },
+      {
+        "command": "lineref.copyLineRefWithCode",
+        "title": "LineRef: Copy Line Reference with Code"
+      },
+      {
+        "command": "lineref.copyGlobalLineRefWithCode",
+        "title": "LineRef: Copy Global Line Reference with Code"
       }
     ],
     "menus": {
@@ -35,6 +43,14 @@
         },
         {
           "command": "lineref.copyGlobalLineRef",
+          "group": "8_lineref"
+        },
+        {
+          "command": "lineref.copyLineRefWithCode",
+          "group": "8_lineref"
+        },
+        {
+          "command": "lineref.copyGlobalLineRefWithCode",
           "group": "8_lineref"
         }
       ]

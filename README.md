@@ -6,16 +6,30 @@ Quickly copy file path and line range references from the current selection. Per
 
 - Select code in the editor and copy a reference like `src/utils/helper.ts:10-20` to the clipboard
 - Single line selection produces `file:10`, multi-line produces `file:10-20`
-- Paths are relative to the workspace root
+- Paths are relative to the workspace root (or absolute with the Global variants)
+- Optionally include the selected code as a fenced markdown block after the reference
 
 ## Usage
 
 1. Select one or more lines in the editor
 2. Use one of the following:
-   - **Command Palette**: `LineRef: Copy Line Reference`
-   - **Command Palette**: `LineRef: Copy Global Line Reference`
-   - **Right-click** context menu: "Copy Line Reference" or "Copy Global Line Reference"
+   - **Command Palette**: `LineRef: Copy Line Reference` — relative path reference
+   - **Command Palette**: `LineRef: Copy Global Line Reference` — absolute path reference
+   - **Command Palette**: `LineRef: Copy Line Reference with Code` — relative path + selected code block
+   - **Command Palette**: `LineRef: Copy Global Line Reference with Code` — absolute path + selected code block
+   - **Right-click** context menu: any of the above
 3. Paste the reference wherever you need it
+
+**Example output with code** (`Copy Line Reference with Code`):
+
+```
+src/utils/helper.ts:10-14
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+```
 
 ## Installation
 
@@ -47,6 +61,16 @@ You can assign your own keys in `keybindings.json`, for example:
   {
     "key": "ctrl+alt+g",
     "command": "lineref.copyGlobalLineRef",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+shift+l",
+    "command": "lineref.copyLineRefWithCode",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+shift+g",
+    "command": "lineref.copyGlobalLineRefWithCode",
     "when": "editorTextFocus"
   }
 ]

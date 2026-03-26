@@ -34,9 +34,12 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 
 ## Key Details
 
-- Command IDs: `lineref.copyLineRef`, `lineref.copyGlobalLineRef`
+- Command IDs: `lineref.copyLineRef`, `lineref.copyGlobalLineRef`, `lineref.copyLineRefWithCode`, `lineref.copyGlobalLineRefWithCode`
 - Keybinding: no default keybindings (users can assign their own in `keybindings.json`)
 - Output format:
   - `lineref.copyLineRef`: `relativePath:startLine` (single line) or `relativePath:startLine-endLine` (range)
   - `lineref.copyGlobalLineRef`: `absolutePath:startLine` (single line) or `absolutePath:startLine-endLine` (range)
+  - `lineref.copyLineRefWithCode`: same as `copyLineRef` followed by a fenced markdown code block of the selected text
+  - `lineref.copyGlobalLineRefWithCode`: same as `copyGlobalLineRef` followed by a fenced markdown code block of the selected text
 - Line numbers are 1-based.
+- The fenced code block language identifier is derived from `document.languageId`.

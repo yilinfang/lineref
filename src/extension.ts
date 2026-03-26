@@ -3,6 +3,7 @@ import * as vscode from "vscode";
 async function copyLineRefInternal(
   editor: vscode.TextEditor,
   useAbsolutePath: boolean,
+  includeCode: boolean = false,
 ): Promise<void> {
   let filePath: string;
   if (useAbsolutePath) {
@@ -27,8 +28,15 @@ async function copyLineRefInternal(
       ? `${filePath}:${startLine}`
       : `${filePath}:${startLine}-${endLine}`;
 
+  let output = lineRef;
+  if (includeCode) {
+    const selectedText = editor.document.getText(editor.selection);
+    const lang = editor.document.languageId;
+    output = `${lineRef}\n\`\`\`${lang}\n${selectedText}\n\`\`\``;
+  }
+
   try {
-    await vscode.env.clipboard.writeText(lineRef);
+    await vscode.env.clipboard.writeText(output);
     vscode.window.setStatusBarMessage(`Copied: ${lineRef}`, 3000);
   } catch (err) {
     vscode.window.showErrorMessage(`Failed to copy: ${err}`);
@@ -62,7 +70,38 @@ export function activate(context: vscode.ExtensionContext) {
     },
   );
 
-  context.subscriptions.push(disposable, disposableGlobal);
+  const disposableWithCode = vscode.commands.registerCommand(
+    "lineref.copyLineRefWithCode",
+    async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        vscode.window.showWarningMessage("No active editor");
+        return;
+      }
+
+      await copyLineRefInternal(editor, false, true);
+    },
+  );
+
+  const disposableGlobalWithCode = vscode.commands.registerCommand(
+    "lineref.copyGlobalLineRefWithCode",
+    async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        vscode.window.showWarningMessage("No active editor");
+        return;
+      }
+
+      await copyLineRefInternal(editor, true, true);
+    },
+  );
+
+  context.subscriptions.push(
+    disposable,
+    disposableGlobal,
+    disposableWithCode,
+    disposableGlobalWithCode,
+  );
 }
 
 export function deactivate() {}
