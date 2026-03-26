@@ -4,6 +4,13 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.0] - 2026-03-26
+
+### Added
+
+- `LineRef: Copy Line Reference with Code` command to copy relative path reference followed by a fenced markdown code block of the selected text
+- `LineRef: Copy Global Line Reference with Code` command to copy absolute path reference followed by a fenced markdown code block of the selected text
+
 ## [0.3.1] - 2026-03-24
 
 ### Changed
