@@ -4,6 +4,12 @@ All notable changes to the "LineRef" extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.1] - 2026-03-26
+
+### Changed
+
+- Release: bump patch version (no functional changes)
+
 ## [0.4.0] - 2026-03-26
 
 ### Added
