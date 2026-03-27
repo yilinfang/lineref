@@ -22,14 +22,14 @@ Quickly copy file path and line range references from the current selection. Per
 
 **Example output with code** (`Copy Line Reference with Code`):
 
-```
+````
 src/utils/helper.ts:10-14
 ```typescript
 function add(a: number, b: number): number {
   return a + b;
 }
 ```
-```
+````
 
 ## Installation
 
