@@ -27,10 +27,9 @@ A VSCode extension that copies file path + line range references (e.g. `src/foo.
 ## Release
 
 - Not published to the VSCode Marketplace.
-- Distributed via `.vsix` files attached to GitHub Releases and published to Open VSX Registry.
-- Workflow: push a tag `v*` → GitHub Actions builds the `.vsix`, creates a GitHub release, and publishes to Open VSX.
+- Distributed via `.vsix` files attached to GitHub Releases.
+- Workflow: push a tag `v*` → GitHub Actions builds the `.vsix` and creates a GitHub release.
 - CI config: `.github/workflows/release.yml`
-- Open VSX publish requires `OVSX_PAT` secret set in GitHub repo settings.
 
 ## Key Details
 
